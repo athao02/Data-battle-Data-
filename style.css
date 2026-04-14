@@ -4,7 +4,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -80,7 +81,8 @@ strong {
   font-size: clamp(12px, 1.4vw, 18px);
 }
 
-#playerHPText, #enemyHPText {
+#playerHPText,
+#enemyHPText {
   font-size: clamp(10px, 1.1vw, 14px);
   margin-top: 2px;
 }
@@ -166,9 +168,11 @@ strong {
 /* ================== POKEMON PICKER MODAL ================== */
 .picker-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.75);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
   z-index: 100;
   display: flex;
   align-items: center;
@@ -291,7 +295,10 @@ strong {
   padding: 2px 8px;
   cursor: pointer;
 }
-.switch-btn:hover { background: #ddd; }
+
+.switch-btn:hover {
+  background: #ddd;
+}
 
 /* Search row */
 .picker-search-row {
@@ -405,12 +412,17 @@ strong {
   background: white;
 }
 
-.picker-buttons button:hover { background: #eee; }
+.picker-buttons button:hover {
+  background: #eee;
+}
 
 .picker-buttons button:nth-child(1) {
   background: #c8f0c8;
 }
-.picker-buttons button:nth-child(1):hover { background: #a0e0a0; }
+
+.picker-buttons button:nth-child(1):hover {
+  background: #a0e0a0;
+}
 
 .picker-error {
   color: red;
@@ -490,9 +502,11 @@ strong {
 /* ================== RUN OVERLAY ================== */
 .run-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.85);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
   z-index: 999;
   display: flex;
   flex-direction: column;
@@ -523,7 +537,7 @@ strong {
   opacity: 0.85;
   z-index: 1000;
   text-shadow: 0 0 8px black;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   padding: 6px 14px;
   border-radius: 4px;
 }
