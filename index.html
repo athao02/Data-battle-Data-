@@ -1,107 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Pokemon Battle</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="battle-container">
+  <div class="battle-container">
 
-  <!-- Enemy -->
-  <div class="pokemon-box enemy">
-    <strong id="enemyName">Loading...</strong>
-    <div id="enemyHPText"></div>
-    <div class="hp-bar">
-      <div class="hp-fill" id="enemyHP"></div>
-    </div>
-    <div id="enemyStats" class="stats-text"></div>
-    <img id="enemySprite" class="sprite enemy-sprite" src="" alt="enemy">
-  </div>
-
-  <!-- Player -->
-  <div class="pokemon-box player">
-    <strong id="playerName">Loading...</strong>
-    <div id="playerHPText"></div>
-    <div class="hp-bar">
-      <div class="hp-fill" id="playerHP"></div>
-    </div>
-    <div id="playerStats" class="stats-text"></div>
-  </div>
-
-  <!-- Player sprite -->
-  <img id="playerSprite" class="sprite player-sprite" src="" alt="player">
-
-  <!-- Text + Menu -->
-  <div class="textbox">
-    <div class="text" id="textBox">Loading battle...</div>
-    <div class="battle-menu">
-      <div class="move-grid" id="moveMenu"></div>
-      <div class="side-btns">
-        <div class="side-btn" onclick="openPokemonPicker()">POKéMON</div>
-        <div class="side-btn" onclick="run()">RUN</div>
+    <!-- Enemy -->
+    <div class="pokemon-box enemy">
+      <strong id="enemyName">Loading...</strong>
+      <div id="enemyHPText"></div>
+      <div class="hp-bar">
+        <div class="hp-fill" id="enemyHP"></div>
       </div>
+      <div id="enemyStats" class="stats-text"></div>
+      <img id="enemySprite" class="sprite enemy-sprite" src="" alt="enemy">
     </div>
-  </div>
 
-</div>
-
-<!-- Picker Modal -->
-<div id="pickerOverlay" class="picker-overlay" style="display:none;">
-  <div class="picker-modal">
-    <h2>Choose Your Fighters</h2>
-
-    <!-- Selected fighters display -->
-    <div class="picker-selected-row">
-      <div class="picker-selected-side" id="playerSelectedSide">
-        <label>YOUR FIGHTER</label>
-        <div class="selected-card" id="playerSelectedCard">
-          <img id="playerPreview" class="picker-preview" src="" alt="" />
-          <div id="playerPreviewName" class="picker-preview-name">None selected</div>
-        </div>
+    <!-- Player -->
+    <div class="pokemon-box player">
+      <strong id="playerName">Loading...</strong>
+      <div id="playerHPText"></div>
+      <div class="hp-bar">
+        <div class="hp-fill" id="playerHP"></div>
       </div>
-      <div class="vs-label">VS</div>
-      <div class="picker-selected-side" id="enemySelectedSide">
-        <label>ENEMY FIGHTER</label>
-        <div class="selected-card" id="enemySelectedCard">
-          <img id="enemyPreview" class="picker-preview" src="" alt="" />
-          <div id="enemyPreviewName" class="picker-preview-name">None selected</div>
+      <div id="playerStats" class="stats-text"></div>
+    </div>
+
+    <!-- Player sprite -->
+    <img id="playerSprite" class="sprite player-sprite" src="" alt="player">
+
+    <!-- Text + Menu -->
+    <div class="textbox">
+      <div class="text" id="textBox">Loading battle...</div>
+      <div class="battle-menu">
+        <div class="move-grid" id="moveMenu"></div>
+        <div class="side-btns">
+          <div class="side-btn" onclick="openPokemonPicker()">POKéMON</div>
+          <div class="side-btn" onclick="run()">RUN</div>
         </div>
       </div>
     </div>
 
-    <!-- Selecting label -->
-    <div class="picker-selecting-label">
-      Selecting for: <span id="selectingFor" class="selecting-for-badge">YOUR FIGHTER</span>
-      <button class="switch-btn" onclick="switchSelectingFor()">Switch →</button>
-    </div>
-
-    <!-- Search -->
-    <div class="picker-search-row">
-      <input type="text" id="pokeSearch" placeholder="🔍 Search Pokémon..." oninput="filterPokedex()" autocomplete="off" />
-      <span id="pokeCount" class="poke-count"></span>
-    </div>
-
-    <!-- Scrollable grid -->
-    <div id="pokedexGrid" class="pokedex-grid">
-      <div class="poke-loading">Loading Pokédex...</div>
-    </div>
-
-    <div class="picker-buttons">
-      <button onclick="confirmPokemon()">⚔️ Battle!</button>
-      <button onclick="closePicker()">Cancel</button>
-    </div>
-    <div id="pickerError" class="picker-error"></div>
   </div>
-</div>
 
-<!-- Run overlay -->
-<div id="runOverlay" class="run-overlay" style="display:none;" onclick="closeRunOverlay()">
-  <img src="https://i.pinimg.com/236x/89/3c/bc/893cbc25aaa02410eb3880fe925af2b0.jpg" class="run-img" alt="You ran away!" />
-  <div class="run-caption">Click anywhere to close</div>
-</div>
+  <!-- Picker Modal -->
+  <div id="pickerOverlay" class="picker-overlay" style="display:none;">
+    <div class="picker-modal">
+      <h2>Choose Your Fighters</h2>
 
-<script src="Luc.js"></script>
+      <!-- Selected fighters display -->
+      <div class="picker-selected-row">
+        <div class="picker-selected-side" id="playerSelectedSide">
+          <label>YOUR FIGHTER</label>
+          <div class="selected-card" id="playerSelectedCard">
+            <img id="playerPreview" class="picker-preview" src="" alt="" />
+            <div id="playerPreviewName" class="picker-preview-name">None selected</div>
+          </div>
+        </div>
+        <div class="vs-label">VS</div>
+        <div class="picker-selected-side" id="enemySelectedSide">
+          <label>ENEMY FIGHTER</label>
+          <div class="selected-card" id="enemySelectedCard">
+            <img id="enemyPreview" class="picker-preview" src="" alt="" />
+            <div id="enemyPreviewName" class="picker-preview-name">None selected</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Selecting label -->
+      <div class="picker-selecting-label">
+        Selecting for: <span id="selectingFor" class="selecting-for-badge">YOUR FIGHTER</span>
+        <button class="switch-btn" onclick="switchSelectingFor()">Switch →</button>
+      </div>
+
+      <!-- Search -->
+      <div class="picker-search-row">
+        <input type="text" id="pokeSearch" placeholder="🔍 Search Pokémon..." oninput="filterPokedex()"
+          autocomplete="off" />
+        <span id="pokeCount" class="poke-count"></span>
+      </div>
+
+      <!-- Scrollable grid -->
+      <div id="pokedexGrid" class="pokedex-grid">
+        <div class="poke-loading">Loading Pokédex...</div>
+      </div>
+
+      <div class="picker-buttons">
+        <button onclick="confirmPokemon()">⚔️ Battle!</button>
+        <button onclick="closePicker()">Cancel</button>
+      </div>
+      <div id="pickerError" class="picker-error"></div>
+    </div>
+  </div>
+
+  <!-- Run overlay -->
+  <div id="runOverlay" class="run-overlay" style="display:none;" onclick="closeRunOverlay()">
+    <img src="https://i.pinimg.com/236x/89/3c/bc/893cbc25aaa02410eb3880fe925af2b0.jpg" class="run-img"
+      alt="You ran away!" />
+    <div class="run-caption">Click anywhere to close</div>
+  </div>
+
+  <script src="luc.js"></script>
 </body>
+
 </html>
