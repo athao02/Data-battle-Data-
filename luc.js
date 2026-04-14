@@ -60,14 +60,14 @@ function updateUI() {
   document.getElementById("enemyHPText").innerText = `HP: ${enemy.hp}/${enemy.maxHp}`;
 
   const playerPct = player.hp / player.maxHp * 100;
-  const enemyPct  = enemy.hp  / enemy.maxHp  * 100;
+  const enemyPct = enemy.hp / enemy.maxHp * 100;
 
   const pb = document.getElementById("playerHP");
   const eb = document.getElementById("enemyHP");
   pb.style.width = playerPct + "%";
-  eb.style.width = enemyPct  + "%";
+  eb.style.width = enemyPct + "%";
   pb.style.background = playerPct > 50 ? "green" : playerPct > 20 ? "orange" : "red";
-  eb.style.background = enemyPct  > 50 ? "green" : enemyPct  > 20 ? "orange" : "red";
+  eb.style.background = enemyPct > 50 ? "green" : enemyPct > 20 ? "orange" : "red";
 
   document.getElementById("playerStats").innerText =
     `ATK: ${player.attack}  SP.ATK: ${player.specialAttack}  SPD: ${player.speed}`;
@@ -145,7 +145,7 @@ function run() {
 
   const scream = new Audio("data:audio/mp3;base64," + DEMON_SCREAM_B64);
   scream.volume = 1.0;
-  scream.play().catch(() => {});
+  scream.play().catch(() => { });
 
   document.getElementById("runOverlay").style.display = "flex";
 }
@@ -154,9 +154,9 @@ function run() {
 async function startBattle() {
   document.getElementById("textBox").innerText = "Loading battle...";
   player = await getPokemon("charmander");
-  enemy  = await getPokemon("pikachu");
+  enemy = await getPokemon("pikachu");
   document.getElementById("playerSprite").src = player.spriteBack || player.sprite;
-  document.getElementById("enemySprite").src  = enemy.sprite;
+  document.getElementById("enemySprite").src = enemy.sprite;
   updateUI();
   renderMoveButtons();
   document.getElementById("textBox").innerText = "A wild " + enemy.name.toUpperCase() + " appeared!";
@@ -185,7 +185,7 @@ async function loadPokedex() {
       };
     });
     filteredPokemon = [...allPokemon];
-  } catch(e) {
+  } catch (e) {
     document.getElementById('pokedexGrid').innerHTML = '<div class="poke-loading">Failed to load Pokédex. Check connection.</div>';
   }
 }
@@ -212,8 +212,8 @@ function renderPokedexGrid() {
 
     card.innerHTML = `
       <img src="${p.sprite}" alt="${p.name}" loading="lazy" />
-      <div class="poke-card-name">${p.name.replace(/-/g,' ')}</div>
-      <div class="poke-card-num">#${String(p.id).padStart(3,'0')}</div>
+      <div class="poke-card-name">${p.name.replace(/-/g, ' ')}</div>
+      <div class="poke-card-num">#${String(p.id).padStart(3, '0')}</div>
     `;
     card.addEventListener('click', () => selectPokemon(p));
     grid.appendChild(card);
@@ -276,7 +276,7 @@ async function openPokemonPicker() {
 
   // Pre-fill from current battle
   pickerSelections.player = player ? { name: player.name, id: null, sprite: player.spriteBack || player.sprite } : null;
-  pickerSelections.enemy  = enemy  ? { name: enemy.name,  id: null, sprite: enemy.sprite  } : null;
+  pickerSelections.enemy = enemy ? { name: enemy.name, id: null, sprite: enemy.sprite } : null;
 
   selectingFor = 'player';
   updateSelectingForUI();
@@ -305,14 +305,14 @@ async function confirmPokemon() {
 
   try {
     if (ps) player = await getPokemon(ps.name);
-    if (es) enemy  = await getPokemon(es.name);
-  } catch(e) {
+    if (es) enemy = await getPokemon(es.name);
+  } catch (e) {
     document.getElementById('pickerError').textContent = 'Could not load a Pokémon. Try again!';
     return;
   }
 
   document.getElementById('playerSprite').src = player.spriteBack || player.sprite;
-  document.getElementById('enemySprite').src  = enemy.sprite;
+  document.getElementById('enemySprite').src = enemy.sprite;
   updateUI();
   renderMoveButtons();
   setMoveBtnsDisabled(false);
